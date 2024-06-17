@@ -1,0 +1,35 @@
+.calendar {
+    display: inline-block;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .header {
+    display: flex;
+    background-color: #512a04;
+    color: white;
+  }
+  
+  .header > div {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .week {
+    display: flex;
+  }
+  
+  .day {
+    flex: 1;
+    padding: 50px;
+    border: 1px solid #ddd;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .day:hover {
+    background-color: #f0f0f0;
+  }
+  
