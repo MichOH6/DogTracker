@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Calendar.css';
+import Modal from './Modal';
 
 const daysInMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate();
@@ -28,6 +29,9 @@ const generateCalendar = (year: number, month: number): (string | number)[][] =>
 };
 
 const Calendar: React.FC = () => {
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const weeks = generateCalendar(currentYear, currentMonth);
@@ -36,9 +40,16 @@ const Calendar: React.FC = () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/date-clicked', { date });
       console.log(response.data.message);
+      setSelectedDate(date);
+      setIsModalOpen(true);
     } catch (error) {
       console.error("There was an error clicking the date!", error);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedDate(null);
   };
 
   return (
@@ -63,6 +74,10 @@ const Calendar: React.FC = () => {
           </div>
         ))}
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>Date Selected</h2>
+        <p>You clicked on date: {selectedDate}</p>
+      </Modal>
     </div>
   );
 };
