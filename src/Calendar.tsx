@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Calendar.css';
 import Modal from './Modal';
-
 const daysInMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate();
 };
@@ -77,6 +76,8 @@ const Calendar: React.FC = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h2>Date Selected</h2>
         <p>You clicked on date: {selectedDate}</p>
+        <textarea className="reactive-textarea"></textarea>
+        <button>Submit</button>
       </Modal>
     </div>
   );

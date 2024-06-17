@@ -33,3 +33,15 @@
     background-color: #f0f0f0;
   }
   
+  .reactive-textarea {
+    width: 100%;
+    min-height: 100px; /* Initial height */
+    resize: none; /* Disable resizing by the user */
+    border: 1px solid #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  button {
+    margin-top: 2%;
+    border: 1px solid #ccc;
+  }
